@@ -1,0 +1,8 @@
+/Pomodoro Timer/task/build/
+/build/intermediates/lint-cache/
+/.idea/
+/.gradle/
+# Ignore plugin files
+*.iml
+*.yaml
+*.html

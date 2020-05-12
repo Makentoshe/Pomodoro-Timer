@@ -23,13 +23,8 @@ class MainActivity : AppCompatActivity() {
 
 
         startButton.setOnClickListener {
-            val now = ZonedDateTime.now()
-            val targetHack = LocalTime.parse("00:${textView.text}", DateTimeFormatter.ofPattern("HH:mm:ss"))
-            val targetTime = now.plusSeconds(targetHack.second.toLong()).plusMinutes(targetHack.minute.toLong())
-            if (ChronoUnit.SECONDS.between(now, targetTime) != 0L) {
-                timerTask = timer.schedule(1000) {
-                }
-            }
+            textView.text = "00:03"
+            scheduleTask()
         }
 
         resetButton.setOnClickListener {
@@ -41,11 +36,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun scheduleTask() {
         val now = ZonedDateTime.now()
-        val targetHack = LocalTime.parse("00:${textView.text}", DateTimeFormatter.ofPattern("HH:mm:ss"))
-        val targetTime = now.plusSeconds(targetHack.second.toLong()).plusMinutes(targetHack.minute.toLong())
-        if (ChronoUnit.SECONDS.between(now, targetTime) != 0L) {
-            timerTask = timer.schedule(1000) { scheduleTask() }
+        val target = getTargetTime(now)
+        val between = ChronoUnit.SECONDS.between(now, target)
+        if (between != 0L) {
+            timerTask = timer.schedule(1000) {
+                val currentTextViewTime = LocalTime.parse("00:${textView.text}", DateTimeFormatter.ofPattern("HH:mm:ss"))
+                val targetTextViewTime = currentTextViewTime.minusSeconds(1)
+                textView.text = targetTextViewTime.format(DateTimeFormatter.ofPattern("mm:ss"))
+                scheduleTask()
+            }
         }
+    }
+
+    private fun getTargetTime(now: ZonedDateTime): ZonedDateTime {
+        val targetHack = LocalTime.parse("00:${textView.text}", DateTimeFormatter.ofPattern("HH:mm:ss"))
+        return now.plusSeconds(targetHack.second.toLong()).plusMinutes(targetHack.minute.toLong())
     }
 
     companion object {

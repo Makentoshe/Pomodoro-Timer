@@ -1,6 +1,5 @@
 package org.hyperskill.pomodoro;
 
-import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
@@ -11,7 +10,6 @@ import org.junit.runner.RunWith;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -27,7 +25,7 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void textViewExist() {
-        onView(ViewMatchers.withId(R.id.timerView)).perform(click());
+        onView(withId(R.id.timerView)).perform(click());
     }
 
     @Test

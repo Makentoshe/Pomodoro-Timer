@@ -1,5 +1,6 @@
 package org.hyperskill.pomodoro
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
@@ -17,11 +18,11 @@ class MainActivity : AppCompatActivity() {
     private val textView by lazy { findViewById<TimerView>(R.id.timerView) }
     private val startButton by lazy { findViewById<Button>(R.id.startButton) }
     private val resetButton by lazy { findViewById<Button>(R.id.resetButton) }
+    private val settingsButton by lazy { findViewById<Button>(R.id.settingButton) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         startButton.setOnClickListener {
             textView.color = Color.RED
@@ -35,6 +36,18 @@ class MainActivity : AppCompatActivity() {
             timerTask?.cancel()
             timerTask = null
             textView.text = "00:05"
+        }
+
+        settingsButton.setOnClickListener {
+            CustomDialogFragment.Factory().show(supportFragmentManager)
+        }
+    }
+
+
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1) {
+
         }
     }
 

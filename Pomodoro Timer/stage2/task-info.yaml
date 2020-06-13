@@ -1,0 +1,12 @@
+type: edu
+files:
+- name: src/test/java/org/hyperskill/pomodoro/ExampleUnitTest.kt
+  visible: false
+- name: src/androidTest/java/com/edu/AndroidEduTestRunner.kt
+  visible: false
+- name: build.gradle
+  visible: true
+- name: src/androidTest/java/org/hyperskill/pomodoro/TimerStateInstrumentedTest.java
+  visible: false
+- name: src/androidTest/java/org/hyperskill/pomodoro/ExampleInstrumentedTest.java
+  visible: false

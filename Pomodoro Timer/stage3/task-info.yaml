@@ -1,0 +1,16 @@
+type: edu
+files:
+- name: build.gradle
+  visible: true
+- name: src/test/java/org/hyperskill/pomodoro/ExampleUnitTest.kt
+  visible: true
+- name: src/androidTest/java/com/edu/AndroidEduTestRunner.kt
+  visible: false
+- name: src/androidTest/java/org/hyperskill/pomodoro/Matchers/TextTimerMatcher.java
+  visible: false
+- name: src/androidTest/java/org/hyperskill/pomodoro/TimerStateInstrumentedTest.java
+  visible: false
+- name: src/androidTest/java/org/hyperskill/pomodoro/ExampleInstrumentedTest.java
+  visible: false
+- name: src/androidTest/java/org/hyperskill/pomodoro/Matchers/ColorTimerMatcher.java
+  visible: false

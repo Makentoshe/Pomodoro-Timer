@@ -1,0 +1,5 @@
+/Pomodoro Timer/task/build/
+/build/intermediates/lint-cache/
+/.idea
+/.gradle
+local.properties

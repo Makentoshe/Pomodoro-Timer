@@ -28,3 +28,5 @@ files:
   visible: true
 - name: src/main/java/org/hyperskill/pomodoro/MainActivity.kt
   visible: true
+- name: src/test/java/resources/robolectric.properties
+  visible: false

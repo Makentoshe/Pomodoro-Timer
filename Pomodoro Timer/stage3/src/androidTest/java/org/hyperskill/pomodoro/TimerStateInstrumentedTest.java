@@ -1,21 +1,19 @@
 package org.hyperskill.pomodoro;
 
-import android.graphics.Color;
-import androidx.test.espresso.action.ViewActions;
-import androidx.test.espresso.matcher.ViewMatchers;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
 
-import org.hyperskill.pomodoro.Matchers.ColorTimerMatcher;
-import org.hyperskill.pomodoro.Matchers.TextTimerMatcher;
+import org.hyperskill.pomodoro.MainActivity;
+import org.hyperskill.pomodoro.R;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -26,39 +24,43 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 public class TimerStateInstrumentedTest {
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityRule
-            = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void timerViewExist() {
-        onView(ViewMatchers.withId(R.id.timerView)).perform(ViewActions.click());
-        onView(withId(R.id.timerView)).check(matches(TextTimerMatcher.withText("00:05")));
+    public void testShouldCheckTimerInitialValue() {
+        onView(withId(R.id.textView)).check(matches(withText("00:00")));
     }
 
     @Test
-    public void startTimer() throws InterruptedException {
-        onView(withId(R.id.startButton)).perform(ViewActions.click());
-        onView(withId(R.id.timerView)).check(matches(ColorTimerMatcher.withColor(Color.RED)));
-        Thread.sleep(5000);
-        onView(withId(R.id.timerView)).check(matches(ColorTimerMatcher.withColor(Color.GREEN)));
-        Thread.sleep(10000);
-        onView(withId(R.id.timerView)).check(matches(ColorTimerMatcher.withColor(Color.YELLOW)));
+    public void testShouldStartCountOnStartButtonClick() throws InterruptedException {
+        onView(withId(R.id.startButton)).perform(click());
+        Thread.sleep(1100);
+        onView(withId(R.id.textView)).check(matches(withText("00:01")));
     }
 
     @Test
-    public void resetTimer() throws InterruptedException {
-        onView(withId(R.id.startButton)).perform(ViewActions.click());
-        Thread.sleep(4000);
-        onView(withId(R.id.timerView)).check(matches(TextTimerMatcher.withText("00:00")));
-        onView(withId(R.id.resetButton)).perform(ViewActions.click());
-        onView(withId(R.id.timerView)).check(matches(TextTimerMatcher.withText("00:05")));
+    public void testShouldStopTimerAndResetCountOnResetButtonClick() throws InterruptedException {
+        onView(withId(R.id.startButton)).perform(click());
+        Thread.sleep(1100);
+        onView(withId(R.id.resetButton)).perform(click());
+        onView(withId(R.id.textView)).check(matches(withText("00:00")));
     }
 
     @Test
-    public void interruptTimer() throws InterruptedException {
-        onView(withId(R.id.startButton)).perform(ViewActions.click());
-        Thread.sleep(2000);
-        startTimer();
+    public void testShouldContinueCountOnPressingStartButtonAgain() throws InterruptedException {
+        testShouldStartCountOnStartButtonClick();
+        onView(withId(R.id.startButton)).perform(click());
+        Thread.sleep(1100);
+        onView(withId(R.id.textView)).check(matches(withText("00:02")));
+    }
+
+    @Test
+    public void testShouldIgnorePressingResetButtonAgain() throws InterruptedException {
+        testShouldStopTimerAndResetCountOnResetButtonClick();
+        Thread.sleep(1100);
+        onView(withId(R.id.resetButton)).perform(click());
+        Thread.sleep(1100);
+        onView(withId(R.id.textView)).check(matches(withText("00:00")));
     }
 
 }

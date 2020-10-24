@@ -1,34 +1,8 @@
-<h2 style="text-align: center;">Android Features</h2>
-
-<p><strong>Custom View: </strong></p>
-
-<p>Use this example as a baseline: <br>
-    <a href="https://medium.com/@mgouline/drawing-an-animated-timer-in-android-65cf4c58e49b" rel="noopener noreferrer nofollow">https://medium.com/@mgouline/drawing-an-animated-timer-in-android-65cf4c58e49b</a></p>
-
-<p>Here is a really advanced example; however, it can be helpful for deeper understanding: <br>
-    <a href="https://youtube.com/watch?v=4NNmMO8Aykw&amp;list=LLVLL6s5YkLLTtkRq1puOfDA&amp;index=19&amp;t=962s" rel="noopener noreferrer nofollow">https://youtube.com/watch?v=4NNmMO8Aykw&amp;list=LLVLL6s5YkLLTtkRq1puOfDA&amp;index=19&amp;t=962s</a></p>
-
-<p><strong>Canvas </strong>(<a href="https://proandroiddev.com/android-bring-life-to-your-custom-view-8604ab3967b3" rel="noopener noreferrer nofollow">https://proandroiddev.com/android-bring-life-to-your-custom-view-8604ab3967b3</a> - short review of canvas architecture): used for drawing UI components on the screen. If you want to create a custom view with a particular shape, color and animation, you should get familiar with working on Canvas. The link above shows how you can draw on Canvas.</p>
-
 <h2 style="text-align: center;">Description</h2>
 
-<p>In this stage, you should implement your custom view (name this class <code>TimerView</code> and put it into <code>org.hyperskill.pomodoro.timer</code> package).</p>
+<p>In this stage, you should implement some graphical features such as a indeterminate progress bar that helps users to understand the current application status</p>
 
-<p>This class should contain <code>String getText()</code> and <code>int getColor()</code> methods.</p>
-
-<p>It should work as follows:</p>
-
-<ol>
-    <li>TimerView should do N "work" rounds and N-1 "rest" rounds and then stop. </li>
-    <li>"work" and "rest" rounds should follow one another, starting from "work" round.</li>
-    <li>TimerView is red during a "work" round </li>
-    <li>TimerView is green during a "rest" round</li>
-    <li>After the last "work" round TimerView is yellow</li>
-</ol>
-
-<p>You may implement an animation of this TimerView, like a circle in the image below, but the easiest way is just filling up the space of TimerView with plain color.</p>
-
-<p>Replace TextView from last steps to TimerView, with id <code>timerView</code>.</p>
+<p>This progress bar should appear then the timer starts and disappear on reset. Let's make the example more complicated: the progress bar color should be changed each second. Color does not matter.</p>
 
 <h2 style="text-align: center;">Result</h2>
 

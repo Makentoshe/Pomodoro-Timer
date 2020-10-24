@@ -1,7 +1,5 @@
 type: edu
 files:
-- name: src/androidTest/java/com/edu/AndroidEduTestRunner.kt
-  visible: false
 - name: build.gradle
   visible: true
 - name: src/androidTest/java/org/hyperskill/pomodoro/TimerStateInstrumentedTest.java
@@ -33,4 +31,6 @@ files:
 - name: src/test/java/resources/robolectric.properties
   visible: false
 - name: src/test/java/org/hyperskill/pomodoro/TimerStateUnitTest.kt
+  visible: false
+- name: src/androidTest/java/com/edu/AndroidEduTestRunner.kt
   visible: false

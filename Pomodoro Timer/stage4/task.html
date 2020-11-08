@@ -9,19 +9,22 @@
 
 <p><strong>AlertDialog </strong>(<a href="https://developer.android.com/guide/topics/ui/dialogs?hl=en" rel="noopener noreferrer nofollow">https://developer.android.com/guide/topics/ui/dialogs?hl=en</a>): sometimes we want to show something in front of the screen; in this case, we can use AlertDialog. This thing appears in front of the screen; it can contain views, and we can set up the behavior of our app depending on events in this dialog box. The link describes this approach.</p>
 
+<p>But the best and more correct way is to use a <a href="https://developer.android.com/reference/android/support/v4/app/DialogFragment.html">DialogFragment</a>. It has the same functional as AlertDialog but it also handles any possible dialog states on his own. This allows us to do not to think about memory leaks or device rotations. </p>
+
 <h2 style="text-align: center;">Description</h2>
 
-<p>In this stage you should set up periods in seconds of "work" and "rest" rounds via AlertDialog with two EditText’s.<br>
-    Add Button with text <code>"Settings"</code> and id <code>settingButton</code>. AlertDialog should appear after clicking this button. AlertDialog should have:</p>
+<p>In this stage, you should set up a stopwatch upper limit in seconds via DialogFragment with single EditText and default dialog buttons. When the time reaches the upper limit the timer color changes to red<br>
+    Add Button with text <code>"Settings"</code> and id <code>settingsButton</code>. DialogFragment should appear after clicking this button. DialogFragment should have:</p>
 
 <ol>
-    <li>EditText with id <code>workTime</code></li>
-    <li>EditText with ID <code>restTime</code></li>
+    <li>EditText with id <code>upperLimit</code></li>
     <li>Button with a text <code>"OK"</code></li>
     <li>Button with a text <code>"Cancel"</code></li>
 </ol>
 
-<p>If there is a number in EditText with id <code>workTime</code> and the user clicks <code>"OK"</code>, set the period of "work" as the number of seconds, just like in EditText and AlertDialog. The process is the same for <code>restTime</code>. If a user clicks on <code>"Cancel"</code> button, only AlertDialog closes.</p>
+<p>Bottom buttons can be placed by using AlertDialog.Builder methods setNegativeButton and setPositiveButton. You should use it and avoid create your own buttons with the same idea</p>
+
+<p>If there is a number in EditText and the user clicks <code>"OK"</code>, set the upper limit as the number of seconds.  If a user clicks on <code>"Cancel"</code> button, only AlertDialog closes.</p>
 
 <h2 style="text-align: center;">Result</h2>
 

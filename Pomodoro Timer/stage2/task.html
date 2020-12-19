@@ -39,42 +39,48 @@
     format <code>"mm:ss"</code> and behaves as follows:</p>
 
 <ol>
-    <li>Initial state: in TextView - <code>"00:00"</code>.</li>
-    <li>After pressing the Start button: the time in TextView starts counting from
-        <code>"00:00"</code>.
+    <li>
+        Initial state: in TextView - <code>"00:00"</code>.
     </li>
-    <li>After pressing the Reset button: the time in TextView is set to <code>"00:00"</code> and
+    <li>
+        After pressing the Start button: the time in TextView starts counting
+        from<code>"00:00"</code>.
+    </li>
+    <li>
+        After pressing the Reset button: the time in TextView is set to <code>"00:00"</code> and
         should not increase until the Start button is pressed again.
     </li>
-    <li>If Start is pressed while time is increasing, TextView should behave as described in step
-        2.
+    <li>
+        If Start is pressed while time is increasing, TextView should behave as described in step 2.
     </li>
-    <li>If Reset is pressed while time is increasing, TextView should behave as described in step
-        3.
+    <li>
+        If Reset is pressed while time is increasing, TextView should behave as described in step 3.
     </li>
 </ol>
 
 <h2 style="text-align: center;">Hints</h2>
 
 <p>1. This functionality can be implemented in different ways, but the simplest way is using <code>Timer</code>
-    from <code>java.util.Timer</code> (<a href="https://www.baeldung.com/java-timer-and-timertask"
-                                          rel="noopener noreferrer nofollow">https://www.baeldung.com/java-timer-and-timertask</a>)
-    with <code>java.util.Calendar</code> (<a
-            href="https://www.mkyong.com/java/java-date-and-calendar-examples/"
-            rel="noopener noreferrer nofollow">https://www.mkyong.com/java/java-date-and-calendar-examples/</a>).
+    from <code>java.util.Timer</code> (
+    <a href="https://www.baeldung.com/java-timer-and-timertask"
+       rel="noopener noreferrer nofollow">https://www.baeldung.com/java-timer-and-timertask</a>)
+    with <code>java.util.Calendar</code> (
+    <a href="https://www.mkyong.com/java/java-date-and-calendar-examples/"
+       rel="noopener noreferrer nofollow">https://www.mkyong.com/java/java-date-and-calendar-examples/
+    </a>).
 </p>
 
 <p>2. You can get the button in the code using <code>findViewById</code> method.</p>
 
 <pre><code class="language-kotlin">
-    val startButton = findViewById<![CDATA[<]]>Button<![CDATA[>]]>(R.id.startButton)
+    val startButton = findViewById&lt;Button&gt;(R.id.resetButton)
 </code></pre>
 
 <p>3. Set up a text in TextView after clicking the button:</p>
 
 <pre><code class="language-kotlin">
     resetButton.setOnClickListener {
-        timerView.text = "text";
+        timerView.text = "00:00"
     }
 </code></pre>
 
@@ -85,12 +91,11 @@
         rel="noopener noreferrer nofollow">https://www.myandroidsolutions.com/2014/04/06/run-code-on-mainui-thread-on-android/#.XH5twYgzZPY</a>):
 </p>
 
-<p>Notice that the previous example is incorrect - listeners aren't executed in the UI thread by default. So,
-    instead of <code>timerView.text = "text"</code> you may write as follows:</p>
+<p>This might be helpful with the Timer class. Particularly, in the seconds counting logic.</p>
 
-<pre><code class="language-java">
+<pre><code class="language-kotlin">
     runOnUiThread {
-        timerView.setText("text");
+        timerView.text = "text"
     }
 </code></pre>
 
@@ -98,12 +103,16 @@
 
 <p>You can see what you should end with in the pictures below:</p>
 
-<p style="text-align: center;"><img alt="" height="393"
-                                    src="https://ucarecdn.com/8b46ed2b-dc9e-47d8-a678-fafc9af47ce3/"
-                                    width="223"></p>
+<p style="text-align: center;">
+    <img alt="" height="393"
+         src="https://ucarecdn.com/8b46ed2b-dc9e-47d8-a678-fafc9af47ce3/"
+         width="223">
+</p>
 
 <p> </p>
 
-<p style="text-align: center;"><img alt="" height="405"
-                                    src="https://ucarecdn.com/21b60126-c6cc-4b6e-9da3-b214c6f0e1fe/"
-                                    width="228"></p>
+<p style="text-align: center;">
+    <img alt="" height="405"
+         src="https://ucarecdn.com/21b60126-c6cc-4b6e-9da3-b214c6f0e1fe/"
+         width="228">
+</p>

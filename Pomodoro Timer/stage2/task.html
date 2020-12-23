@@ -60,14 +60,9 @@
 
 <h2 style="text-align: center;">Hints</h2>
 
-<p>1. This functionality can be implemented in different ways, but the simplest way is using <code>Timer</code>
-    from <code>java.util.Timer</code> (
-    <a href="https://www.baeldung.com/java-timer-and-timertask"
-       rel="noopener noreferrer nofollow">https://www.baeldung.com/java-timer-and-timertask</a>)
-    with <code>java.util.Calendar</code> (
-    <a href="https://www.mkyong.com/java/java-date-and-calendar-examples/"
-       rel="noopener noreferrer nofollow">https://www.mkyong.com/java/java-date-and-calendar-examples/
-    </a>).
+<p>1. This functionality can be implemented in different ways, but the simplest one is using
+        <a href="https://developer.android.com/reference/android/os/Handler"><code>android.os.Handler</code></a>, 
+        especially its <code>postDelayed</code> or <code>postAtTime</code> method.
 </p>
 
 <p>2. You can get the button in the code using <code>findViewById</code> method.</p>
@@ -83,13 +78,6 @@
         timerView.text = "00:00"
     }
 </code></pre>
-
-<p>4. Run the code in a UI thread: UI components in Android work in the UI thread and are not
-    thread-safe, so in order to make changes in a UI component, we have to run changes in the UI
-    thread.<br>
-    (<a href="https://www.myandroidsolutions.com/2014/04/06/run-code-on-mainui-thread-on-android/#.XH5twYgzZPY"
-        rel="noopener noreferrer nofollow">https://www.myandroidsolutions.com/2014/04/06/run-code-on-mainui-thread-on-android/#.XH5twYgzZPY</a>):
-</p>
 
 <p>This might be helpful with the Timer class. Particularly, in the seconds counting logic.</p>
 

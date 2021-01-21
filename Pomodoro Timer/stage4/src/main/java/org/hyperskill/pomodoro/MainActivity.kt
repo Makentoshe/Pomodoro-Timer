@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         resetButton.setOnClickListener {
             timer.stopCounting()
             textView.setText(R.string.initial_timer_state)
+            textView.setTextColor(Color.DKGRAY)
             progressBar.visibility = View.GONE
             settingsButton.isEnabled = true
         }

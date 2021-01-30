@@ -1,8 +1,8 @@
 type: hyperskill
-title: HyperskillKotlinCourse-PomodoroTimer
+title: hyperskill-stopwatch
 language: English
 summary: Hyperskill lesson 328598
 programming_language: Kotlin
 environment: Android
 content:
-- Pomodoro Timer
+- stopwatch

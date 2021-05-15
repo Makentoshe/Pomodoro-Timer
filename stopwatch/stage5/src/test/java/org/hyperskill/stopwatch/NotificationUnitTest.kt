@@ -3,6 +3,7 @@ package org.hyperskill.stopwatch
 import android.app.AlertDialog
 import android.app.NotificationManager
 import android.content.Context
+import android.os.Looper
 import android.widget.Button
 import android.widget.EditText
 import junit.framework.TestCase.assertEquals
@@ -11,6 +12,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.Shadows
 import org.robolectric.shadows.ShadowAlertDialog
 import org.robolectric.shadows.ShadowNotificationManager
 
@@ -36,7 +38,9 @@ class NotificationUnitTest {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).performClick()
 
         activity.findViewById<Button>(R.id.startButton).performClick()
+
         Thread.sleep(secondsToCount * 1000 + 2100L)
+        Shadows.shadowOf(Looper.getMainLooper()).runToEndOfTasks()
 
         // TODO ShadowNotificationManager from robolectric does not works properly
         // So, we decided to check notifications through default NotificationManager

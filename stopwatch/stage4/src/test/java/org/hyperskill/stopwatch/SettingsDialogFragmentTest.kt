@@ -2,6 +2,7 @@ package org.hyperskill.stopwatch
 
 import android.app.AlertDialog
 import android.graphics.Color
+import android.os.Looper
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -10,6 +11,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.Shadows
 import org.robolectric.shadows.ShadowAlertDialog
 
 @RunWith(RobolectricTestRunner::class)
@@ -33,7 +35,9 @@ class SettingsDialogFragmentTest {
         Assert.assertTrue(message1, activity.findViewById<Button>(R.id.settingsButton).isEnabled)
 
         activity.findViewById<Button>(R.id.startButton).performClick()
+
         Thread.sleep(1000L)
+        Shadows.shadowOf(Looper.getMainLooper()).runToEndOfTasks()
 
         val message2 = "view with id \"settingsButton\" should be disabled when timer runs"
         Assert.assertFalse(message2, activity.findViewById<Button>(R.id.settingsButton).isEnabled)
@@ -62,7 +66,9 @@ class SettingsDialogFragmentTest {
         dialog.getButton(AlertDialog.BUTTON_NEGATIVE).performClick()
 
         activity.findViewById<Button>(R.id.startButton).performClick()
+
         Thread.sleep(secondsToCount * 1000 + 500L)
+        Shadows.shadowOf(Looper.getMainLooper()).runToEndOfTasks()
 
         val message = "\"textView\" color should not be RED"
         Assert.assertNotEquals(message, Color.RED, activity.findViewById<TextView>(R.id.textView).currentTextColor)
@@ -79,7 +85,9 @@ class SettingsDialogFragmentTest {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).performClick()
 
         activity.findViewById<Button>(R.id.startButton).performClick()
+
         Thread.sleep(secondsToCount * 1000 + 1100L)
+        Shadows.shadowOf(Looper.getMainLooper()).runToEndOfTasks()
 
         val message = "\"textView\" color should be RED"
         Assert.assertEquals(message, Color.RED, activity.findViewById<TextView>(R.id.textView).currentTextColor)
@@ -96,7 +104,9 @@ class SettingsDialogFragmentTest {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).performClick()
 
         activity.findViewById<Button>(R.id.startButton).performClick()
+
         Thread.sleep(secondsToCount * 1000 + 1100L)
+        Shadows.shadowOf(Looper.getMainLooper()).runToEndOfTasks()
 
         val message1 = "\"textView\" color should be RED"
         Assert.assertEquals(message1, Color.RED, activity.findViewById<TextView>(R.id.textView).currentTextColor)
@@ -104,7 +114,9 @@ class SettingsDialogFragmentTest {
         activity.findViewById<Button>(R.id.resetButton).performClick()
 
         activity.findViewById<Button>(R.id.startButton).performClick()
+
         Thread.sleep(1100L)
+        Shadows.shadowOf(Looper.getMainLooper()).runToEndOfTasks()
 
         val message2 = "\"textView\" color should not be RED"
         Assert.assertNotEquals(message2, Color.RED, activity.findViewById<TextView>(R.id.textView).currentTextColor)

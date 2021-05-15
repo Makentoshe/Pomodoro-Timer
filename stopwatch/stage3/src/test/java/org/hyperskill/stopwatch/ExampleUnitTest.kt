@@ -1,6 +1,6 @@
 package org.hyperskill.stopwatch
 
-import android.os.Looper.getMainLooper
+import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
@@ -10,7 +10,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.Shadows.shadowOf
+import org.robolectric.Shadows
 
 @RunWith(RobolectricTestRunner::class)
 class ExampleUnitTest {
@@ -90,16 +90,21 @@ class ExampleUnitTest {
         val message = "invalid progress bar color"
 
         val activity = activityController.setup().get()
+
         activity.findViewById<Button>(R.id.startButton).performClick()
+
         Thread.sleep(100L)
+        Shadows.shadowOf(Looper.getMainLooper()).runToEndOfTasks()
 
         var lastColor: Int? = 0
         for (i in 0 until 10) {
-            shadowOf(getMainLooper()).idle()
+            Shadows.shadowOf(Looper.getMainLooper()).idle()
             val color = activity.findViewById<ProgressBar>(R.id.progressBar).indeterminateTintList?.defaultColor
             assertNotEquals(message, color, lastColor)
             lastColor = color
+
             Thread.sleep(1000L)
+            Shadows.shadowOf(Looper.getMainLooper()).idle()
         }
     }
 }

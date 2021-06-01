@@ -11,8 +11,8 @@ android {
         // DO NOT CHANGE THIS VALUE
         // Because this version related with robolectic version too
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "com.edu.AndroidEduTestRunner"
     }
 

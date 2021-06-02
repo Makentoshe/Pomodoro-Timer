@@ -1,7 +1,6 @@
 package org.hyperskill.stopwatch
 
 import android.os.Looper
-import android.os.Looper.getMainLooper
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
@@ -12,8 +11,8 @@ import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.Shadows
-import org.robolectric.Shadows.shadowOf
 
+//Version 1.1
 @RunWith(RobolectricTestRunner::class)
 class ExampleUnitTest {
 

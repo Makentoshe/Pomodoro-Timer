@@ -99,13 +99,13 @@ class ExampleUnitTest {
 
         var lastColor: Int? = 0
         for (i in 0 until 10) {
-            Shadows.shadowOf(Looper.getMainLooper()).idle()
+            Shadows.shadowOf(Looper.getMainLooper()).runToEndOfTasks()
             val color = activity.findViewById<ProgressBar>(R.id.progressBar).indeterminateTintList?.defaultColor
             assertNotEquals(message, color, lastColor)
             lastColor = color
 
             Thread.sleep(1000L)
-            Shadows.shadowOf(Looper.getMainLooper()).idle()
+            Shadows.shadowOf(Looper.getMainLooper()).runToEndOfTasks()
         }
     }
 }

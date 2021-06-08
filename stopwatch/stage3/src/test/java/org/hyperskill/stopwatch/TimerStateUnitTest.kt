@@ -10,7 +10,7 @@ import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.Shadows
 
-//Version 1.1
+//Version 1.2
 @RunWith(RobolectricTestRunner::class)
 class TimerStateUnitTest {
 

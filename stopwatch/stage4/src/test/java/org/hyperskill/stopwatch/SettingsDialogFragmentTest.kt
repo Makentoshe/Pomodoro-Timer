@@ -14,7 +14,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.Shadows
 import org.robolectric.shadows.ShadowAlertDialog
 
-//Version 1.1
+//Version 1.2
 @RunWith(RobolectricTestRunner::class)
 class SettingsDialogFragmentTest {
 

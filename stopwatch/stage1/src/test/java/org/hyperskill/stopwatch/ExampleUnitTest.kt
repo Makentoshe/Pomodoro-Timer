@@ -9,6 +9,7 @@ import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 
+// Version 1.2
 @RunWith(RobolectricTestRunner::class)
 class ExampleUnitTest {
 

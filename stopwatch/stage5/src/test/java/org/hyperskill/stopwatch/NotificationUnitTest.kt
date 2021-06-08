@@ -16,7 +16,7 @@ import org.robolectric.Shadows
 import org.robolectric.shadows.ShadowAlertDialog
 import org.robolectric.shadows.ShadowNotificationManager
 
-//Version 1.1
+//Version 1.2
 @RunWith(RobolectricTestRunner::class)
 class NotificationUnitTest {
 
